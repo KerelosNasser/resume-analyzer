@@ -7,7 +7,7 @@ import Summary from "~/components/feedback/Summary";
 import type { Feedback } from "~/types";
 
 export const meta = () => [
-  { title: "Resumind | Review " },
+  { title: "Resume-analyzer | Review " },
   { name: "description", content: "Detailed overview of your resume" },
 ];
 
