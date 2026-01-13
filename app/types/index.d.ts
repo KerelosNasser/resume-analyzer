@@ -1,3 +1,36 @@
+interface Resume {
+  id: string;
+  companyName: string;
+  jobTitle: string;
+  imagePath: string;
+  resumePath: string;
+  feedback: {
+    overallScore: number;
+    ATS: {
+      score: number;
+      tips: any[];
+    };
+    toneAndStyle: {
+      score: number;
+      tips: any[];
+    };
+    content: {
+      score: number;
+      tips: any[];
+    };
+    structure: {
+      score: number;
+      tips: any[];
+    };
+    skills: {
+      score: number;
+      tips: any[];
+    };
+  };
+}
+
+export type { Resume };
+
 export const resumes: Resume[] = [
   {
     id: "1",
