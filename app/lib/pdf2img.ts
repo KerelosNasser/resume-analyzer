@@ -13,14 +13,23 @@ async function loadPdfJs(): Promise<any> {
   if (loadPromise) return loadPromise;
 
   isLoading = true;
-  // @ts-expect-error - pdfjs-dist/build/pdf.mjs is not a module
-  loadPromise = import("pdfjs-dist/build/pdf.mjs").then((lib) => {
-    // Set the worker source to use local file
-    lib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-    pdfjsLib = lib;
-    isLoading = false;
-    return lib;
-  });
+  // Dynamic import of pdfjs-dist
+  loadPromise = import("pdfjs-dist")
+    .then((lib) => {
+      // In v5.x, the library exports are named
+      const pdfjs = lib;
+      if (pdfjs.GlobalWorkerOptions) {
+        pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+      }
+      pdfjsLib = pdfjs;
+      isLoading = false;
+      return pdfjs;
+    })
+    .catch((err) => {
+      isLoading = false;
+      loadPromise = null;
+      throw err;
+    });
 
   return loadPromise;
 }
