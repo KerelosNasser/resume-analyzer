@@ -1,8 +1,6 @@
-# 🧠 Resumind - AI-Powered Resume Analyzer
+# 🧠 resume-analyzer - AI-Powered Resume Analyzer
 
-Resumind is a sophisticated AI-driven platform designed to help job seekers optimize their resumes for specific roles. By leveraging advanced Large Language Models (LLMs) and cloud-native infrastructure, Resumind provides actionable feedback, ATS scoring, and visual insights to bridge the gap between candidates and their dream jobs.
-
-![Resumind Banner](https://raw.githubusercontent.com/KerelosNasser/resume-analyzer/main/public/images/bg-main.svg)
+resume-analyzer is a sophisticated AI-driven platform designed to help job seekers optimize their resumes for specific roles. By leveraging advanced Large Language Models (LLMs) and cloud-native infrastructure, resume-analyzer provides actionable feedback, ATS scoring, and visual insights to bridge the gap between candidates and their dream jobs.
 
 ## ✨ Key Features
 
@@ -14,7 +12,7 @@ Resumind is a sophisticated AI-driven platform designed to help job seekers opti
 
 ## 🧠 How it Works
 
-Resumind follows a structured pipeline to ensure high-quality analysis:
+resume-analyzer follows a structured pipeline to ensure high-quality analysis:
 
 1.  **File Ingestion**: Users upload their resume in PDF format.
 2.  **Visual Conversion**: The PDF is processed using `pdf.js` to create a high-resolution image representation, allowing the user to view their resume natively in the feedback dashboard.
@@ -93,7 +91,7 @@ Since the app heavily uses `Puter.js`, it is optimized for hosting on the Puter.
 
 ## 🛡️ Security & Privacy
 
-Resumind uses Puter's isolated cloud environment. Your resumes are stored in your own Puter account's file system, ensuring you maintain full control over your data.
+resume-analyzer uses Puter's isolated cloud environment. Your resumes are stored in your own Puter account's file system, ensuring you maintain full control over your data.
 
 ---
 
