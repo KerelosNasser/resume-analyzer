@@ -1,87 +1,100 @@
-# Welcome to React Router!
+# 🧠 Resumind - AI-Powered Resume Analyzer
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Resumind is a sophisticated AI-driven platform designed to help job seekers optimize their resumes for specific roles. By leveraging advanced Large Language Models (LLMs) and cloud-native infrastructure, Resumind provides actionable feedback, ATS scoring, and visual insights to bridge the gap between candidates and their dream jobs.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+![Resumind Banner](https://raw.githubusercontent.com/KerelosNasser/resume-analyzer/main/public/images/bg-main.svg)
 
-## Features
+## ✨ Key Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **🎯 Job-Specific Analysis**: Upload your resume along with a specific Job Description to get tailored feedback.
+- **📊 ATS Scoring**: Get an instant ATS compatibility score to understand how well your resume performs against automated filters.
+- **🔍 Visual Side-by-Side Review**: Converts PDF resumes to images for a fluid, interactive reviewing experience alongside AI feedback.
+- **🛠️ Improvement Roadmap**: Detailed breakdown of sections (Summary, Experience, Skills) with clear, actionable improvement tips.
+- **☁️ Cloud-Native Experience**: Fully integrated with Puter.js for secure authentication, file storage, and AI processing.
 
-## Getting Started
+## 🧠 How it Works
+
+Resumind follows a structured pipeline to ensure high-quality analysis:
+
+1.  **File Ingestion**: Users upload their resume in PDF format.
+2.  **Visual Conversion**: The PDF is processed using `pdf.js` to create a high-resolution image representation, allowing the user to view their resume natively in the feedback dashboard.
+3.  **Context Gathering**: Users provide the target **Job Title** and **Job Description**, giving the AI the necessary context for a "matching" analysis.
+4.  **AI Analysis**: The resume and job context are sent to **Claude 3.5 Sonnet**. The AI performs a deep dive into:
+    - **ATS Compatibility**: Formatting, keywords, and parsability.
+    - **Content Depth**: Impact of experience and relevance of skills.
+    - **Tone & Style**: Professionalism and readability.
+    - **Structural Integrity**: Layout and information hierarchy.
+5.  **Data Persistence**: Results are stored in **Puter's Key-Value store**, enabling fast retrieval and persistent history without a complex database setup.
+
+## 🚀 Tech Stack
+
+### Frontend
+
+- **Framework**: [React 19](https://react.dev/) + [React Router 7](https://reactrouter.com/) (v7)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://zustand.js.org/)
+- **Animations**: [tw-animate-css](https://github.com/shuding/tw-animate)
+
+### Platform & AI (Powered by Puter.js)
+
+- **AI Engine**: Claude 3.5 Sonnet (via Puter AI)
+- **Storage**: Puter Cloud File System
+- **Database**: Puter Key-Value Storage
+- **Auth**: Puter Auth (Single Sign-On)
+
+### Processing
+
+- **PDF Engine**: [PDF.js](https://mozilla.github.io/pdf.js/) for high-fidelity PDF-to-Image conversion.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- [pnpm](https://pnpm.io/) installed.
+- A [Puter.com](https://puter.com/) account for environment integration.
 
 ### Installation
 
-Install the dependencies:
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/KerelosNasser/resume-analyzer.git
+   cd resume-analyzer
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`.
+
+## 📦 Deployment
+
+### Docker
+
+The project is containerized and ready for deployment:
 
 ```bash
-npm install
+docker build -t resumind .
+docker run -p 3000:3000 resumind
 ```
 
-### Development
+### Puter.com (Recommended)
 
-Start the development server with HMR:
+Since the app heavily uses `Puter.js`, it is optimized for hosting on the Puter.com platform. Just upload your build folder to Puter and point the entry point to `index.html`.
 
-```bash
-npm run dev
-```
+## 🛡️ Security & Privacy
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Resumind uses Puter's isolated cloud environment. Your resumes are stored in your own Puter account's file system, ensuring you maintain full control over your data.
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ by [Kerelos Nasser](https://github.com/KerelosNasser)
